@@ -83,19 +83,44 @@
         <p><strong>⏰ Time:</strong> 10:00 PM - 17:00 PM</p>
         <p><strong>👔 Dress Code:</strong> 🏝️ Tropical Vibes</p>
         <p>I hope u all come (: 🎉</p>
-        <audio autoplay loop id="myAudio">
-            <source src="Hbd.mp3" type="audio/mpeg">
-        </audio>
+
+        <button class="open-btn" onclick="toggleMute()" id="muteButton" style="display: none; margin-top: 10px;">🔊 Mute</button>
     </div>
+    <audio id="myAudio" loop>
+        <source src="Hbd.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="open-btn" onclick="toggleMute()" id="muteButton" style="display: none;">🔊 Mute</button>
 
     <script>
+        var audio = document.getElementById("myAudio");
+        var muteButton = document.getElementById("muteButton");
+        audio.volume = 0.1; // Set volume to 10%
+
         function openLetter() {
             let message = document.getElementById("message");
             message.classList.toggle("open");
+
+            if (message.classList.contains("open")) {
+                audio.play(); // Play audio when opening
+                muteButton.style.display = "inline-block"; // Show mute button
+            } else {
+                audio.pause(); // Pause audio when closing
+                muteButton.style.display = "none"; // Hide mute button
+            }
         }
 
-        var audio = document.getElementById("myAudio");
-        audio.volume = 0.1; // Set volume to 50% (0.0 to 1.0)
+        function toggleMute() {
+            if (audio.muted) {
+                audio.muted = false;
+                muteButton.textContent = "🔊 Mute";
+            } else {
+                audio.muted = true;
+                muteButton.textContent = "🔇 Unmute";
+            }
+        }
+    </script>
+
     </script>
 </body>
 </html>
