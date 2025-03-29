@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Invitation</title>
+    <style>
+       body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #BBDBF7;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+        }
+        .envelope {
+            position: relative;
+            width: 250px;
+            height: 180px;
+            background: #F6E3D4;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .message {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 300px;
+            background: #7BC5C1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            opacity: 0;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+        }
+        .message.open {
+            display: block;
+            animation: fadeIn 0.5s ease-out, scaleUp 0.5s ease-out;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes scaleUp {
+            from { transform: translate(-50%, -50%) scale(0.8); }
+            to { transform: translate(-50%, -50%) scale(1); }
+        }
+        .open-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #e84393;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .open-btn:hover {
+            background-color: #d63031;
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope">
+        <span>📩 Birthday Invitation</span>
+    </div>
+    <button class="open-btn" onclick="openLetter()">Open Letter</button>
+    <div class="message" id="message">
+        <h1>You're Invited!</h1>
+        <p>Pleasseeee come and have fun at my partyy!!</p>
+        <p><strong>📅 Date:</strong> April 12, 2025</p>
+        <p><strong>📍 Location:</strong><a href="https://www.google.com/maps/place/Granada+Riverside+Resort+Anyer/@-6.2142279,105.875344,15.54z/data=!4m6!3m5!1s0x2e4229b0909ea13f:0x2da08de65469dcf8!8m2!3d-6.2174449!4d105.8763758!16s%2Fg%2F11k3td89gx?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D">Granada Resort</a></p>
+        <p><strong>⏰ Time:</strong> 10:00 PM - 17:00 PM</p>
+        <p><strong>👔 Dress Code:</strong> 🏝️ Tropical Vibes</p>
+        <p>I hope u all come (: 🎉</p>
+        <audio autoplay loop id="myAudio">
+            <source src="Hbd.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        function openLetter() {
+            let message = document.getElementById("message");
+            message.classList.toggle("open");
+        }
+
+        var audio = document.getElementById("myAudio");
+        audio.volume = 0.05; // Set volume to 50% (0.0 to 1.0)
+    </script>
+</body>
+</html>
